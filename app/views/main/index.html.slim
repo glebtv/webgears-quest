@@ -1,0 +1,42 @@
+=flash[:success] if flash[:success]
+.row.add-domain.jumbotron
+  =form_for @log,html:{ class: 'form-inline', role: 'form'} do |f|
+    .form-group
+      =f.label :domain, for: 'domain'
+      =f.text_field :domain, class: 'form-control'
+    .form-group
+      =f.label :url, for: 'url'
+      =f.text_field :url , value: '/logs/access.log', class: 'form-control'
+
+    =f.submit 'Add log', class: 'btn btn-lg btn-success'
+
+.row.main-table
+  -@logs.each_with_index  do |l,i|
+  .col-sm-2
+    ul class='nav nav-pills nav-stacked'
+      li =link_to l.domain, "#tab#{i}", data:{toggle: 'tab'}
+
+  .col-sm-10
+    .tab-content
+      .tab-pane
+      table class='table'
+        thead
+          tr
+            th IP
+            th Request date
+            th Request content
+            th Response status
+            th Response weight (bytes)
+            th User info
+        tbody
+          -@logs.each do |l|
+            -l.log_lines.each do |ll|
+              tr
+                td =ll.user_ip
+                td =ll.request_time
+                td =ll.request_content
+                td =ll.response_status
+                td =ll.response_weight
+                td =truncate(ll.user_info)
+
+=console
