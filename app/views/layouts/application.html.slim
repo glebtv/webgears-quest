@@ -10,3 +10,4 @@ html
     = flash_messages
     = render 'layouts/header'
     == yield
+    =console if Rails.env.development?
