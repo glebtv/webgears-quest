@@ -1,23 +1,23 @@
-=form_tag({controller: 'main', action: 'regexp_sort'}, {method: "get"}) do
-
-  =text_field_tag :user_ip
-  =text_field_tag :request_time
-  =text_field_tag :request_content
-  =text_field_tag :response_status
-  =text_field_tag :response_weight
-  =text_field_tag :user_info
-
-  =submit_tag 'search'
 .col-sm-10
-  table class='table'
+  .search-row
+    =form_tag({controller: 'main', action: 'regexp_sort'}, {method: "get"}) do
+      =text_field_tag :user_ip,         nil,    placeholder: 'user ip'
+      =text_field_tag :request_time,    nil,    placeholder: 'request time'
+      =text_field_tag :request_content, nil,    placeholder: 'request content'
+      =text_field_tag :response_status, nil,    placeholder: 'response status'
+      =text_field_tag :response_weight, nil,    placeholder: 'response weight'
+      =text_field_tag :user_info,       nil,    placeholder: 'user info'
+      =submit_tag 'search', class: 'btn'
+.col-sm-10
+  table class='table sortable'
     thead
       tr
-        th  =link_to 'User ip', sort: 'user_ip'
-        th  =link_to 'Request time', sort: 'request_time'
-        th  =link_to 'Request content', sort: 'request_content'
-        th  =link_to 'Status', sort: 'response_status'
-        th  =link_to 'Weight (bytes)', sort: 'response_weight'
-        th  =link_to 'User info', sort: 'user_info'
+        th User ip
+        th Request time
+        th Request content
+        th Status
+        th Weight (bytes)
+        th User info
     tbody
       /=binding.pry
       -set_log.log_lines.each do |ll|

@@ -1,8 +1,48 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.add-domain{
+  font-size: 30px;
+  padding-left: 50px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(59, 140, 181,.6);
+  label{
+    margin-right: 8px;
+  }
+  input{
+    margin-right: 40px;
+  }
+}
+.main-table{
+  margin-top: 10px;
+}
+
 .tab-pane{
   position: absolute;
   display: inline-block;
   width: 100%;
+}
+table.sortable thead {
+  background-color:#eee;
+  color:#666666;
+  font-weight: bold;
+  cursor: default;
+}
+.alert{
+  margin: 0!important;
+}
+
+.nav-pills{
+  li{
+    width: 100%;
+    text-align: center;
+  }
+}
+.search-row{
+  margin-bottom: 10px;
+  margin-left: 5px;
+  padding-bottom: 5px;
+}
+.col-sm-10{
+  padding-left: 0!important;
 }

@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.tablesorter
 //= require_tree .
+
+
+ready = function(){
+    $('js-sortable').tablesorter()
+};
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

@@ -1,10 +1,8 @@
-.alert-success
-  =flash[:success] if flash[:success]
 .row.add-domain.jumbotron
   =form_for @new_log,html:{ class: 'form-inline', role: 'form'} do |f|
     .form-group
       =f.label :domain, for: 'domain'
-      =f.text_field :domain, class: 'form-control'
+      =f.text_field :domain, class: 'form-control new-domain'
     .form-group
       =f.label :url, for: 'url'
       =f.text_field :url , value: '/logs/access.log', class: 'form-control'
