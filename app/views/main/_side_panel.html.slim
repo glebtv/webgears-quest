@@ -1,0 +1,4 @@
+.col-sm-2
+  ul class='nav nav-pills'
+    -@logs.each  do |l|
+      li =link_to truncate(l.domain), l, data:{id: l.id}

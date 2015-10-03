@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'main/index', as: 'logs'
   post 'main/index', to: 'main#create'
   root 'main#index'
+
+  get '/main/index/:id', to: 'main#show', as: 'log'
+  get 'main/index/:id/regexp_sort', to: 'main#regexp_sort'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

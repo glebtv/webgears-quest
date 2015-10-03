@@ -13,12 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20151001162236) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "log_lines", force: :cascade do |t|
     t.string   "user_ip"
-    t.datetime "request_time"
+    t.string   "request_time"
     t.string   "request_content"
-    t.integer  "response_status"
-    t.integer  "response_weight"
+    t.string   "response_status"
+    t.string   "response_weight"
     t.string   "user_info"
     t.integer  "log_id"
     t.datetime "created_at",      null: false
