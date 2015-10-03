@@ -5,7 +5,8 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: webgears-quest
-  pool: 5
+  <<: *default
+
+production:
+  <<: *default
+
