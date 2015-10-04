@@ -1,12 +1,13 @@
 class Log < ActiveRecord::Base
-  require 'net/http'
+  require 'open-uri'
   has_many :log_lines, dependent: :destroy
 
   after_create{
     uri = URI(self.glue)
-    rows = Net::HTTP.get(uri).split(/[\n]/)
-    rows.each do |row|
-      parse_log_line(row)
+    open(uri) do |f|
+      f.each_line do |row|
+        parse_log_line(row)
+      end
     end
     self.save
   }
@@ -27,5 +28,7 @@ class Log < ActiveRecord::Base
     )
   end
 
-
+  def update_log_lines
+    #
+  end
 end

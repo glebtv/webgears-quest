@@ -8,9 +8,7 @@ class MainController < ApplicationController
 
   def create
     if Log.find_by(domain: params[:domain]).present?
-      @log = Log.find_by(domain: params[:domain])
-        #тут нужно добавить метод который сначала скачивает дельту
-        #а затем создает новые log_lines с данными из дельты
+      #
     else
       @log = Log.new(log_params)
       if @log.save
