@@ -19,4 +19,6 @@ class ApplicationController < ActionController::Base
   def search_param(param)
       params[param.to_sym].blank? ? '.*' : params[param.to_sym]
   end
+
+
 end
