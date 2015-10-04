@@ -7,17 +7,13 @@ class MainController < ApplicationController
   end
 
   def create
-    if Log.find_by(domain: params[:domain]).present?
-      #
+    @log = Log.find_or_create_by(log_params)
+    if @log.save
+      redirect_to @log
+      flash[:success] = 'save!'
     else
-      @log = Log.new(log_params)
-      if @log.save
-        redirect_to @log
-        flash[:success] = 'save!'
-      else
-        redirect_to root_path
-        flash[:error]  = 'Domain already used!'
-      end
+      redirect_to root_path
+      flash[:error]  = 'Something goes wrong'
     end
   end
 
