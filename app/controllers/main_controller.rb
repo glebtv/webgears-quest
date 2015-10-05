@@ -29,11 +29,7 @@ class MainController < ApplicationController
 
   def regexp_sort
     @sort = Log.new
-    @sort.log_lines = @log.log_lines.where(
-        message(%w{user_ip request_time  request_content response_status response_weight user_info}),
-        search_param('user_ip'),search_param('request_time'),search_param('request_content'),
-        search_param('response_status') ,search_param('response_weight'), search_param('user_info')
-    )
+    @sort.log_lines = @log.regexp_search(params)
   end
 
   private
