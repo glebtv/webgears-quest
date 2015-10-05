@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(version: 20151001162236) do
   create_table "logs", force: :cascade do |t|
     t.string   "domain"
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "log_lines_count", default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
 end

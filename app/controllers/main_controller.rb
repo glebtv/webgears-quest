@@ -1,9 +1,8 @@
 class MainController < ApplicationController
-  before_action :set_log, only: [:regexp_sort,:show]
+  before_action :set_log, only: [:regexp_sort, :show, :update]
   before_action :set_logs
 
   def index
-
   end
 
   def create
@@ -17,6 +16,13 @@ class MainController < ApplicationController
     end
   end
 
+  def update
+    @log.add_log_lines
+    if @log.save
+      redirect_to @log
+      flash[:success] = 'Update!'
+    end
+  end
 
   def show
   end
