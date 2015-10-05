@@ -1,6 +1,8 @@
 class Log < ActiveRecord::Base
   has_many :log_lines, dependent: :destroy
 
+  ATTRIBUTES = %w{user_ip request_time  request_content response_status response_weight user_info}
+
   after_create{
     self.add_log_lines
   }
@@ -42,12 +44,12 @@ class Log < ActiveRecord::Base
 
   def regexp_search(params)
     self.log_lines.where(
-        message(%w{user_ip request_time  request_content response_status response_weight user_info}),
-        search_param('user_ip',params),search_param('request_time',params),search_param('request_content',params),
-        search_param('response_status',params) ,search_param('response_weight',params), search_param('user_info',params)
+        message(ATTRIBUTES),
+        params[:user_ip],params[:request_time],params[:request_content],
+        params[:response_status] ,params[:response_weight], params[:user_info]
     )
   end
-  #не лучшее решение, так как в поисковый запрос передаются даже не заполненые поля
+
   def message(params)
     message = ''
     params.map do |p|
@@ -57,8 +59,5 @@ class Log < ActiveRecord::Base
   end
 
 
-  def search_param(param,params)
-    params[param.to_sym].blank? ? '.*' : params[param.to_sym]
-  end
 
 end

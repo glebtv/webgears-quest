@@ -7,6 +7,4 @@ class ApplicationController < ActionController::Base
     @new_log  = Log.new
   end
 
-
-
 end
