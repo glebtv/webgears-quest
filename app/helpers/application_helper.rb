@@ -1,10 +1,4 @@
 module ApplicationHelper
-  def sortable(column, title = nil)
-    title ||= column.titleize
-    column.gsub!(' ','_')
-    direction = (column == params[:sort] && params[:direction] == "asc") ? "desc" : "asc"
-    link_to title, sort: column, direction: direction
-  end
 
   def set_log
     @sort.present? ?  @sort : @log
@@ -22,5 +16,9 @@ module ApplicationHelper
              end)
     end
     nil
+  end
+
+  def active_class(link_path)
+    current_page?(link_path) ? 'active' : ''
   end
 end

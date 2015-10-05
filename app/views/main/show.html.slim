@@ -1,6 +1,3 @@
-.row.update_button
-  =form_for @log do |f|
-    =f.submit 'Update log' ,class: 'btn btn-primary'
 .row.main-table data-id='#{@log.id}'
   =render 'side_panel'
   =render 'table' , log_lines: @log.log_lines

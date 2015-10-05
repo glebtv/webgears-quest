@@ -2,8 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready =  ->
-  log_id = $('.main-table').data('id')
-  $('li').find("[data-id= '"+log_id+"']").parent().addClass('active')
 
 
 $(document).ready(ready)

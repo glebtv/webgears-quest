@@ -1,9 +1,9 @@
 .search-row.row
   =form_tag({controller: 'main', action: 'regexp_sort'}, {method: "get"}) do
-    =text_field_tag :user_ip,         nil,    placeholder: 'user ip'
-    =text_field_tag :request_time,    nil,    placeholder: 'request time'
-    =text_field_tag :request_content, nil,    placeholder: 'request content'
-    =text_field_tag :response_status, nil,    placeholder: 'response status'
-    =text_field_tag :response_weight, nil,    placeholder: 'response weight'
-    =text_field_tag :user_info,       nil,    placeholder: 'user info'
+    =text_field_tag :user_ip,         nil,    placeholder: 'user ip',         value: params[:user_ip]
+    =text_field_tag :request_time,    nil,    placeholder: 'request time',    value: params[:request_time]
+    =text_field_tag :request_content, nil,    placeholder: 'request content', value: params[:request_content]
+    =text_field_tag :response_status, nil,    placeholder: 'response status', value: params[:response_status]
+    =text_field_tag :response_weight, nil,    placeholder: 'response weight', value: params[:response_weight]
+    =text_field_tag :user_info,       nil,    placeholder: 'user info',       value: params[:user_info]
     =submit_tag 'search', class: 'btn'

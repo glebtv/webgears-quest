@@ -1,4 +1,10 @@
 .col-sm-2
+  .row.update_button
+    -if @log
+      =form_for @log do |f|
+        =f.submit 'Update log', class: 'btn btn-success'
+
   ul class='nav nav-pills'
     -@logs.each  do |l|
-      li =link_to truncate(l.domain), l, data:{id: l.id}
+      li class="#{active_class(l)}"
+        =link_to truncate(l.domain), l, data:{id: l.id}
