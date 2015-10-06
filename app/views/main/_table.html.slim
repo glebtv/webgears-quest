@@ -6,7 +6,8 @@
       tr
         th User ip
         th Request time
-        th Request content
+        th Request method
+        th Request url
         th Status
         th Weight (bytes)
         th User info
@@ -16,7 +17,8 @@
         tr
           td=ll.user_ip
           td=ll.request_time
-          td=truncate(ll.request_content)
+          td=ll.request_method
+          td=ll.request_url
           td=ll.response_status
           td=ll.response_weight
           td=truncate(ll.user_info)

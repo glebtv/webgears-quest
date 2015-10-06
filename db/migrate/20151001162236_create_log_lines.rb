@@ -3,7 +3,8 @@ class CreateLogLines < ActiveRecord::Migration
     create_table :log_lines do |t|
       t.string :user_ip
       t.string :request_time
-      t.string :request_content
+      t.string :request_method
+      t.string :request_url
       t.string :response_status
       t.string :response_weight
       t.string :user_info

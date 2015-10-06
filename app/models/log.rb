@@ -30,7 +30,8 @@ class Log < ActiveRecord::Base
     self.log_lines.build(
       user_ip:         row.slice!(/^(?:[0-9]{1,3}\.){3}[0-9]{1,3}/),
       request_time:    row.slice!(/\[([^\]]+)\]/).gsub(/[\[\]]/, ''),
-      request_content: row.slice!(/"([A-Z]+)[^"]*"/),
+      request_method:  row.slice!(/([A-Z]+)/),
+      request_url:     row.slice!(/([\/\w \.-]*)([\da-z\.-]+)\.([a-z\.]{2,6})/),
       response_status: row.slice!(/ \d+/),
       response_weight: row.slice!(/ \d+/),
       user_info:       row.slice!(/ "[^"]*" "([^"]*)"$/)
