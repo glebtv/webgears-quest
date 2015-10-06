@@ -1,7 +1,7 @@
 class Log < ActiveRecord::Base
   has_many :log_lines, dependent: :destroy
 
-  ATTRIBUTES = %w{user_ip request_time  request_content response_status response_weight user_info}
+  ATTRIBUTES = %w{user_ip request_time request_method request_url response_status response_weight user_info}
 
   after_create{
     self.add_log_lines
@@ -46,7 +46,7 @@ class Log < ActiveRecord::Base
   def regexp_search(params)
     self.log_lines.where(
         message(ATTRIBUTES),
-        params[:user_ip],params[:request_time],params[:request_content],
+        params[:user_ip],params[:request_time],params[:request_method],params[:request_url],
         params[:response_status] ,params[:response_weight], params[:user_info]
     )
   end
